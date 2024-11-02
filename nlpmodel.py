@@ -1,12 +1,14 @@
 import pandas as pd
 import tensorflow as tf
+from tensorflow.keras.layers import Embedding, GlobalAveragePooling1D, Dense, Dropout
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.models import Sequential
 from sklearn.model_selection import train_test_split
+
 from sklearn.preprocessing import LabelEncoder
 
-df = pd.read_csv('.venv/data.csv')
+df = pd.read_csv('data.csv')
 df['label'] = df['label'].map({'CG': 1, 'OG': 0})
 texts = df['text_'].astype(str).values
 labels = df['label'].values
